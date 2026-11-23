@@ -1,0 +1,30 @@
+{
+  "mode": "online",
+  "source_variant": "tushare_daily_shenwan_sina",
+  "universe_index": "zz500",
+  "sample_start": "2019-01-02",
+  "sample_end": "2026-10-30",
+  "rows": 1943001,
+  "stocks": 1107,
+  "dates": 1897,
+  "tradable_rows": 946149,
+  "market_cap_proxy_fraction": 1.0,
+  "valuation_max_age_days": 90,
+  "valuation_age_days": {
+    "peTTM_age_days": {
+      "p50": 0.0,
+      "p95": 457.0,
+      "max": 2802.0
+    },
+    "pbMRQ_age_days": {
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 1625.0
+    }
+  },
+  "industry_max_age_days": 45,
+  "industry_unclassified_fraction": 0.15630202969530124,
+  "industry_schemes": [
+    "申万行业变更历史"
+  ]
+}

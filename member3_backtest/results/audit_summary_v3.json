@@ -1,0 +1,50 @@
+{
+  "hs300_clean": {
+    "pool": "hs300",
+    "models": [
+      "M1",
+      "M2",
+      "M3b",
+      "M4",
+      "M5"
+    ],
+    "n_days": 921,
+    "benchmark_terminal_nav": 0.9967420510747932,
+    "benchmark_cum_return": -0.0032579489252068106,
+    "max_ledger_residual": 0.0
+  },
+  "hs300_full": {
+    "pool": "hs300",
+    "models": [
+      "M0a",
+      "M0b",
+      "M1",
+      "M2",
+      "M3a",
+      "M3b",
+      "M4",
+      "M5"
+    ],
+    "n_days": 921,
+    "benchmark_terminal_nav": 0.9967420510747932,
+    "benchmark_cum_return": -0.0032579489252068106,
+    "max_ledger_residual": 0.0
+  },
+  "zz500": {
+    "pool": "zz500",
+    "models": [
+      "M0a",
+      "M0b",
+      "M1",
+      "M2",
+      "M3a",
+      "M3b",
+      "M4",
+      "M5"
+    ],
+    "n_days": 921,
+    "benchmark_terminal_nav": 1.0394446353003504,
+    "benchmark_cum_return": 0.03944463530035036,
+    "max_ledger_residual": 0.0
+  }
+}

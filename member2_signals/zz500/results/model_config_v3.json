@@ -1,0 +1,90 @@
+{
+  "data": {
+    "mode": "online",
+    "source_variant": "tushare_daily_shenwan_sina",
+    "universe_index": "zz500",
+    "sample_start": "2019-01-02",
+    "sample_end": "2026-10-30",
+    "rows": 1943001,
+    "stocks": 1107,
+    "dates": 1897,
+    "tradable_rows": 946149,
+    "market_cap_proxy_fraction": 1.0,
+    "valuation_max_age_days": 90,
+    "valuation_age_days": {
+      "peTTM_age_days": {
+        "p50": 0.0,
+        "p95": 457.0,
+        "max": 2802.0
+      },
+      "pbMRQ_age_days": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 1625.0
+      }
+    },
+    "industry_max_age_days": 45,
+    "industry_unclassified_fraction": 0.15630202969530124,
+    "industry_schemes": [
+      "申万行业变更历史"
+    ]
+  },
+  "sha256": {
+    "benchmark_daily.parquet": "0d3b0c1ff5e66febb8b2570e0aaabb8126b0721b5c190310ef93a8229ea71207",
+    "clean_daily_panel.parquet": "3e96844ce118451058e94a45bd5fe035ad238a3570b926d3f72d79ab73e7025e",
+    "historical_constituents.parquet": "27b7f47a37ba6135c276a9c7c29c16b3f39eb0a0ef797f5f4ab96e91aab2d96e",
+    "matrix_amount.parquet": "cb4ab5dc13db54109426b7e8acd9db81cba8910f817a3295dee33ca5802caddd",
+    "matrix_bp.parquet": "2c5e171f4a33f52d8f216b2b94721eeb2f6dd34289a92ffa5c5c106464487141",
+    "matrix_can_sell_held.parquet": "3caf510f378d09c7b7e28da2f97db2811479cbc186fe3cadbd4051cc5c1f59c3",
+    "matrix_close_hfq.parquet": "8180a13ee3beff5e116489d79ad059877ca4aa0e60bd0d8d0046a979d7c67e2b",
+    "matrix_ep.parquet": "8e26e23010200262005122b79fc8d35b79b35ebd965397dfb6c377f4eefe8047",
+    "matrix_high_hfq.parquet": "efd1505041b8277c10ca0c14992f0b7830c97c73714e4778e367907cba62cf6f",
+    "matrix_is_limit_down.parquet": "e838099ba3300d098aaf3dd9ebc2928e05672135460240806c42ac045b8ce65d",
+    "matrix_is_limit_up.parquet": "87d155518174d6bef14158df98668a02ec6de8fec834f38083a6638aa4b0f9f3",
+    "matrix_ln_float_mv_proxy.parquet": "73baeb80e95e6b2654d9ba722915b85c13ee53856656d1700311b2fb3ba84062",
+    "matrix_ln_mkt_cap.parquet": "73baeb80e95e6b2654d9ba722915b85c13ee53856656d1700311b2fb3ba84062",
+    "matrix_low_hfq.parquet": "074794e5691b793a85deaec1f1fe6cdd54c2846912b77a8975b44b49c6fbf48b",
+    "matrix_open_hfq.parquet": "e61e75e6c4e6cf28703ad5e4b809e14e8ba8a5f3cc39d4ed6beb417c18b885c0",
+    "matrix_open_quote_observed.parquet": "cfd52a2b5c92c85b57857246c1c4949af7fb738c694a00b316c8e2130149237c",
+    "matrix_returns.parquet": "36dac81efd7f18afe23c5bddc559a8a0d55db2a88186311eccac86878f44b4c7",
+    "matrix_tradable_mask.parquet": "a2969a9249bed669a39147bc467818e4fb365baa379529388c15e3fb5c28f109",
+    "matrix_turn.parquet": "63264f1ce8a16528f09ad740becb94d18b313fbd0172b3a0cd781dc8d145bd29",
+    "matrix_volume.parquet": "cfbdfbb0d47b00958003c1fa75109febe7323fa77caf41e16b4ad73c8eeb83a1",
+    "matrix_vwap_hfq.parquet": "0dd90eb0b4b4d338f14ba494004bb3cf642cca886581f0e5df1c2f7aa18928c6"
+  },
+  "selected_directions": {
+    "40": 1,
+    "13": 1,
+    "44": 1
+  },
+  "primary_horizon": 5,
+  "stages": {
+    "train": [
+      "2019-01-02",
+      "2022-12-31"
+    ],
+    "validation": [
+      "2023-01-01",
+      "2024-12-31"
+    ],
+    "seen": [
+      "2025-01-01",
+      "2026-10-30"
+    ]
+  },
+  "signal_anchor": "2023-01-06",
+  "frequency": 5,
+  "keep": 75,
+  "top": 50,
+  "buffer_state": "prev_target",
+  "model_formulas": {
+    "M0a": "B on M0b support",
+    "M0b": "0.5B+0.25A006+0.25A033",
+    "M1": "B=(bp+ep+small)/3",
+    "M2": "Z((bp+ep)/2)",
+    "M3a": "0.9B+0.1 mean(signed selected); B if none",
+    "M3b": "0.85M2+0.15new012",
+    "M4": "mean(bp,ep,lowvol,lowturn)",
+    "M5": "mean(bp,ep,lowvol,lowturn,eb)"
+  }
+}
