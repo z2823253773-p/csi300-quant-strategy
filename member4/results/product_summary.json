@@ -1,0 +1,767 @@
+{
+  "data_verification": {
+    "unit": "元 (CNY)",
+    "verification_date": "2026-10-30",
+    "median_amount_over_vol_close": 1.0052389847421768,
+    "p05_ratio": 0.9895076256282006,
+    "p95_ratio": 1.0304082804273231,
+    "median_daily_amount_yuan": 503522962.77,
+    "note": "amount/(volume*close) 中位数约为 1.005，确认 matrix_amount 单位为人民币元（非千元或万元）。"
+  },
+  "methodology": {
+    "adv20_rule": "调仓日前20个交易日不复权成交额均值（shift(1)，严格不含执行日当日数据，min_periods=10）",
+    "sigma20_rule": "调仓日前20个交易日个股日收益标准差（shift(1)，min_periods=10）",
+    "impact_model": "单笔冲击 = Y * sigma_i * sqrt(Q_i / ADV20_i)，主参数 Y=0.8，敏感性 Y=0.5 / 1.0",
+    "capacity_definition_3": "相对沪深300超额年化收益被冲击成本吃掉一半时的 AUM",
+    "fee_accrual_rule": "管理费与托管运营费按年化费率/252逐日计提；业绩报酬采用逐日高水位暂提净值（Mark-to-Market）并按自然年度末及期末（2023-12-29、2024-12-31、2025-12-31、2026-10-30）计提扣减更新高水位",
+    "turnover_audit": {
+      "baseline": {
+        "mean_turnover": 0.05866404041495084,
+        "max_turnover": 0.49985004498650454,
+        "steady_mean_turnover": 0.05626629039010545,
+        "max_reconstructed_diff": 0.0001499550134963501
+      },
+      "research": {
+        "mean_turnover": 0.5120445549609004,
+        "max_turnover": 0.6628220814449408,
+        "steady_mean_turnover": 0.5121108294716308,
+        "max_reconstructed_diff": 0.0007022400648938332
+      }
+    }
+  },
+  "upstream_backtest_summary": {
+    "sample_period": "2023-01-09 至 2026-10-30 (921个交易日, 185个调仓日)",
+    "baseline_full": {
+      "区间": "全样本(2023-2026.10)",
+      "累计收益": 0.45375226368192734,
+      "年化收益": 0.10779631227758002,
+      "年化波动": 0.1600085924545145,
+      "夏普": 0.6736907726266212,
+      "最大回撤": -0.16693526893911415,
+      "样本数": 921
+    },
+    "research_full": {
+      "区间": "全样本(2023-2026.10)",
+      "累计收益": -0.06517188253969697,
+      "年化收益": -0.018270698051387257,
+      "年化波动": 0.16257482956584537,
+      "夏普": -0.11238331358045395,
+      "最大回撤": -0.271091017813727,
+      "样本数": 921
+    },
+    "hs300_full": {
+      "区间": "全样本(2023-2026.10)",
+      "累计收益": 0.001158535191511323,
+      "年化收益": 0.0003168600495753182,
+      "年化波动": 0.17421345545193087,
+      "夏普": 0.0018188035404805257,
+      "最大回撤": -0.24803913984688297,
+      "样本数": 921
+    },
+    "baseline_val": {
+      "区间": "验证期(2023-2024)",
+      "累计收益": 0.28253864152062524,
+      "年化收益": 0.13955946032788558,
+      "年化波动": 0.18151574788157862,
+      "夏普": 0.7688559365049392,
+      "最大回撤": -0.16693526893911415,
+      "样本数": 480
+    },
+    "baseline_oos": {
+      "区间": "样本外(2025-2026.10)",
+      "累计收益": 0.16639093475182642,
+      "年化收益": 0.09193465351667474,
+      "年化波动": 0.13113726241559098,
+      "夏普": 0.7010566777375747,
+      "最大回撤": -0.13518770459458185,
+      "样本数": 441
+    },
+    "baseline_ideal_terminal_nav": 1.5085570610348773,
+    "research_ideal_terminal_nav": 1.3068987553508593,
+    "baseline_te_vs_hs300": 0.1304892132389624,
+    "baseline_ir_vs_hs300": 0.823665416935112
+  },
+  "product_elements": {
+    "product_name": "沪深300价值精选量化私募证券投资基金",
+    "product_type": "私募证券投资基金 / 专户",
+    "risk_level": "R3（中风险）",
+    "benchmark": "沪深300指数（000300.SH）",
+    "min_subscription_wan": 100,
+    "warning_line": 0.85,
+    "stop_loss_line": 0.8,
+    "warning_stoploss_rationale": "回测全样本最大回撤为 -16.69%（净值谷底约 0.833 相对前期高点），预警线 0.85 提供约 1.7 个百分点的风险缓冲，止损线 0.80 在极端回撤突破历史极值约 3.3 个百分点时触发刚性风控。",
+    "open_frequency": "周度开放 / 月度开放（建议月度开放以匹配 5 日调仓且减少申赎现金拖累）",
+    "lock_up_months": 6,
+    "target_clients": [
+      "高净值个人（满足100万合格投资者门槛，推荐方案A/B）",
+      "家族办公室（中长期配置，推荐方案B）",
+      "FOF / MOM 机构投资者（大额低费率，推荐方案C）"
+    ]
+  },
+  "liquidity_profile": [
+    {
+      "model": "baseline",
+      "rebalance_count": 185,
+      "held_adv20_min_yi": 0.299715967055,
+      "held_adv20_p10_yi": 1.6411299438550002,
+      "held_adv20_p25_yi": 2.5286419087775,
+      "held_adv20_median_yi": 4.4928005086875,
+      "held_adv20_mean_yi": 5.834225653211102,
+      "held_adv20_p90_yi": 11.934799087841997,
+      "latest_date": "2026-10-30",
+      "latest_adv20_min_yi": 1.301366663425,
+      "latest_adv20_p10_yi": 2.060891922929,
+      "latest_adv20_median_yi": 5.048274004482501
+    },
+    {
+      "model": "research",
+      "rebalance_count": 185,
+      "held_adv20_min_yi": 0.299715967055,
+      "held_adv20_p10_yi": 1.742251855955,
+      "held_adv20_p25_yi": 2.6923803680950003,
+      "held_adv20_median_yi": 4.733575753105,
+      "held_adv20_mean_yi": 6.768000302485173,
+      "held_adv20_p90_yi": 13.157745069716002,
+      "latest_date": "2026-10-30",
+      "latest_adv20_min_yi": 1.464242114245,
+      "latest_adv20_p10_yi": 1.9951316902175003,
+      "latest_adv20_median_yi": 4.441687130555
+    }
+  ],
+  "recommended_aum": 10.0,
+  "recommended_aum_unit": "亿元",
+  "theoretical_capacity_half_excess": 80.86539520553488,
+  "capacity_constraints": [
+    {
+      "model": "baseline",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(1日窗口)",
+      "participation_rate": 0.01,
+      "window_days": 1,
+      "p10_yuan": 51686951.15740843,
+      "median_yuan": 107276510.54824236,
+      "p10_yi": 0.5168695115740843,
+      "median_yi": 1.0727651054824237,
+      "steady_p10_yi": 0.5211555857563074,
+      "steady_median_yi": 1.0763572577761098
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(3日窗口)",
+      "participation_rate": 0.01,
+      "window_days": 3,
+      "p10_yuan": 155060853.4722253,
+      "median_yuan": 321829531.6447271,
+      "p10_yi": 1.5506085347222531,
+      "median_yi": 3.218295316447271,
+      "steady_p10_yi": 1.5634667572689223,
+      "steady_median_yi": 3.229071773328329
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "liquidation_5d",
+      "constraint_label": "持仓可清算约束(5日窗口)",
+      "participation_rate": 0.01,
+      "window_days": 5,
+      "p10_yuan": 113463760.30652368,
+      "median_yuan": 225575995.13214928,
+      "p10_yi": 1.1346376030652368,
+      "median_yi": 2.255759951321493,
+      "steady_p10_yi": 1.1346376030652368,
+      "steady_median_yi": 2.255759951321493
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(1日窗口)",
+      "participation_rate": 0.02,
+      "window_days": 1,
+      "p10_yuan": 103373902.31481686,
+      "median_yuan": 214553021.09648472,
+      "p10_yi": 1.0337390231481687,
+      "median_yi": 2.1455302109648473,
+      "steady_p10_yi": 1.0423111715126148,
+      "steady_median_yi": 2.1527145155522196
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(3日窗口)",
+      "participation_rate": 0.02,
+      "window_days": 3,
+      "p10_yuan": 310121706.9444506,
+      "median_yuan": 643659063.2894542,
+      "p10_yi": 3.1012170694445063,
+      "median_yi": 6.436590632894542,
+      "steady_p10_yi": 3.1269335145378445,
+      "steady_median_yi": 6.458143546656658
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "liquidation_5d",
+      "constraint_label": "持仓可清算约束(5日窗口)",
+      "participation_rate": 0.02,
+      "window_days": 5,
+      "p10_yuan": 226927520.61304736,
+      "median_yuan": 451151990.26429856,
+      "p10_yi": 2.2692752061304735,
+      "median_yi": 4.511519902642986,
+      "steady_p10_yi": 2.2692752061304735,
+      "steady_median_yi": 4.511519902642986
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(1日窗口)",
+      "participation_rate": 0.05,
+      "window_days": 1,
+      "p10_yuan": 258434755.78704214,
+      "median_yuan": 536382552.74121183,
+      "p10_yi": 2.5843475578704216,
+      "median_yi": 5.363825527412119,
+      "steady_p10_yi": 2.6057779287815372,
+      "steady_median_yi": 5.381786288880549
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(3日窗口)",
+      "participation_rate": 0.05,
+      "window_days": 3,
+      "p10_yuan": 775304267.3611264,
+      "median_yuan": 1609147658.2236354,
+      "p10_yi": 7.753042673611264,
+      "median_yi": 16.091476582236353,
+      "steady_p10_yi": 7.817333786344611,
+      "steady_median_yi": 16.145358866641644
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "liquidation_5d",
+      "constraint_label": "持仓可清算约束(5日窗口)",
+      "participation_rate": 0.05,
+      "window_days": 5,
+      "p10_yuan": 567318801.5326184,
+      "median_yuan": 1127879975.6607463,
+      "p10_yi": 5.673188015326184,
+      "median_yi": 11.278799756607464,
+      "steady_p10_yi": 5.673188015326184,
+      "steady_median_yi": 11.278799756607464
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(1日窗口)",
+      "participation_rate": 0.1,
+      "window_days": 1,
+      "p10_yuan": 516869511.5740843,
+      "median_yuan": 1072765105.4824237,
+      "p10_yi": 5.168695115740843,
+      "median_yi": 10.727651054824237,
+      "steady_p10_yi": 5.2115558575630745,
+      "steady_median_yi": 10.763572577761098
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(3日窗口)",
+      "participation_rate": 0.1,
+      "window_days": 3,
+      "p10_yuan": 1550608534.7222528,
+      "median_yuan": 3218295316.447271,
+      "p10_yi": 15.506085347222529,
+      "median_yi": 32.18295316447271,
+      "steady_p10_yi": 15.634667572689223,
+      "steady_median_yi": 32.29071773328329
+    },
+    {
+      "model": "baseline",
+      "constraint_type": "liquidation_5d",
+      "constraint_label": "持仓可清算约束(5日窗口)",
+      "participation_rate": 0.1,
+      "window_days": 5,
+      "p10_yuan": 1134637603.0652368,
+      "median_yuan": 2255759951.3214927,
+      "p10_yi": 11.346376030652369,
+      "median_yi": 22.557599513214928,
+      "steady_p10_yi": 11.346376030652369,
+      "steady_median_yi": 22.557599513214928
+    },
+    {
+      "model": "research",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(1日窗口)",
+      "participation_rate": 0.01,
+      "window_days": 1,
+      "p10_yuan": 26040275.647459146,
+      "median_yuan": 47296064.90953212,
+      "p10_yi": 0.26040275647459143,
+      "median_yi": 0.4729606490953212,
+      "steady_p10_yi": 0.2603522972764776,
+      "steady_median_yi": 0.4745415943669425
+    },
+    {
+      "model": "research",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(3日窗口)",
+      "participation_rate": 0.01,
+      "window_days": 3,
+      "p10_yuan": 78120826.94237743,
+      "median_yuan": 141888194.72859636,
+      "p10_yi": 0.7812082694237743,
+      "median_yi": 1.4188819472859635,
+      "steady_p10_yi": 0.7810568918294327,
+      "steady_median_yi": 1.4236247831008273
+    },
+    {
+      "model": "research",
+      "constraint_type": "liquidation_5d",
+      "constraint_label": "持仓可清算约束(5日窗口)",
+      "participation_rate": 0.01,
+      "window_days": 5,
+      "p10_yuan": 125388710.92171714,
+      "median_yuan": 236852377.59330863,
+      "p10_yi": 1.2538871092171713,
+      "median_yi": 2.3685237759330864,
+      "steady_p10_yi": 1.2538871092171713,
+      "steady_median_yi": 2.3685237759330864
+    },
+    {
+      "model": "research",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(1日窗口)",
+      "participation_rate": 0.02,
+      "window_days": 1,
+      "p10_yuan": 52080551.29491829,
+      "median_yuan": 94592129.81906424,
+      "p10_yi": 0.5208055129491829,
+      "median_yi": 0.9459212981906424,
+      "steady_p10_yi": 0.5207045945529551,
+      "steady_median_yi": 0.949083188733885
+    },
+    {
+      "model": "research",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(3日窗口)",
+      "participation_rate": 0.02,
+      "window_days": 3,
+      "p10_yuan": 156241653.88475487,
+      "median_yuan": 283776389.4571927,
+      "p10_yi": 1.5624165388475486,
+      "median_yi": 2.837763894571927,
+      "steady_p10_yi": 1.5621137836588654,
+      "steady_median_yi": 2.8472495662016546
+    },
+    {
+      "model": "research",
+      "constraint_type": "liquidation_5d",
+      "constraint_label": "持仓可清算约束(5日窗口)",
+      "participation_rate": 0.02,
+      "window_days": 5,
+      "p10_yuan": 250777421.84343427,
+      "median_yuan": 473704755.18661726,
+      "p10_yi": 2.5077742184343426,
+      "median_yi": 4.737047551866173,
+      "steady_p10_yi": 2.5077742184343426,
+      "steady_median_yi": 4.737047551866173
+    },
+    {
+      "model": "research",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(1日窗口)",
+      "participation_rate": 0.05,
+      "window_days": 1,
+      "p10_yuan": 130201378.23729573,
+      "median_yuan": 236480324.5476606,
+      "p10_yi": 1.3020137823729574,
+      "median_yi": 2.364803245476606,
+      "steady_p10_yi": 1.3017614863823879,
+      "steady_median_yi": 2.3727079718347124
+    },
+    {
+      "model": "research",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(3日窗口)",
+      "participation_rate": 0.05,
+      "window_days": 3,
+      "p10_yuan": 390604134.7118872,
+      "median_yuan": 709440973.6429818,
+      "p10_yi": 3.906041347118872,
+      "median_yi": 7.094409736429817,
+      "steady_p10_yi": 3.905284459147164,
+      "steady_median_yi": 7.118123915504137
+    },
+    {
+      "model": "research",
+      "constraint_type": "liquidation_5d",
+      "constraint_label": "持仓可清算约束(5日窗口)",
+      "participation_rate": 0.05,
+      "window_days": 5,
+      "p10_yuan": 626943554.6085857,
+      "median_yuan": 1184261887.966543,
+      "p10_yi": 6.269435546085857,
+      "median_yi": 11.84261887966543,
+      "steady_p10_yi": 6.269435546085857,
+      "steady_median_yi": 11.84261887966543
+    },
+    {
+      "model": "research",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(1日窗口)",
+      "participation_rate": 0.1,
+      "window_days": 1,
+      "p10_yuan": 260402756.47459146,
+      "median_yuan": 472960649.0953212,
+      "p10_yi": 2.604027564745915,
+      "median_yi": 4.729606490953212,
+      "steady_p10_yi": 2.6035229727647757,
+      "steady_median_yi": 4.745415943669425
+    },
+    {
+      "model": "research",
+      "constraint_type": "rebalance_participation",
+      "constraint_label": "调仓参与率(3日窗口)",
+      "participation_rate": 0.1,
+      "window_days": 3,
+      "p10_yuan": 781208269.4237744,
+      "median_yuan": 1418881947.2859635,
+      "p10_yi": 7.812082694237744,
+      "median_yi": 14.188819472859635,
+      "steady_p10_yi": 7.810568918294328,
+      "steady_median_yi": 14.236247831008274
+    },
+    {
+      "model": "research",
+      "constraint_type": "liquidation_5d",
+      "constraint_label": "持仓可清算约束(5日窗口)",
+      "participation_rate": 0.1,
+      "window_days": 5,
+      "p10_yuan": 1253887109.2171714,
+      "median_yuan": 2368523775.933086,
+      "p10_yi": 12.538871092171714,
+      "median_yi": 23.68523775933086,
+      "steady_p10_yi": 12.538871092171714,
+      "steady_median_yi": 23.68523775933086
+    }
+  ],
+  "capacity_impact": {
+    "recommended_aum": 10.0,
+    "recommended_aum_unit": "亿元",
+    "recommended_aum_yuan": 1000000000.0,
+    "recommended_aum_rationale": "依据口径1与口径2流动性约束：5%参与率下 3日调仓 P10 为 7.75 亿元、5日清仓 P10–中位数为 5.67–11.28 亿元，故建议管理规模控制在 10 亿元以内。",
+    "theoretical_capacity_half_excess": 80.86539520553488,
+    "theoretical_capacity_unit": "亿元",
+    "half_excess_capacities": {
+      "Y_0.5": {
+        "baseline_half_excess_aum_yuan": 20701541172.61693,
+        "baseline_half_excess_aum_yi": 207.01541172616928,
+        "baseline_target_net_ann": 0.05405658616357767,
+        "research_half_excess_aum_yi": 0.0,
+        "research_capacity_note": "计成本后超额年化在 AUM=0 时已为 -1.86%（<0），按定义容量为 0",
+        "research_equal_drag_ref_aum_yi": 3.1809605493447326
+      },
+      "Y_0.8": {
+        "baseline_half_excess_aum_yuan": 8086539520.553488,
+        "baseline_half_excess_aum_yi": 80.86539520553488,
+        "baseline_target_net_ann": 0.05405658616357767,
+        "research_half_excess_aum_yi": 0.0,
+        "research_capacity_note": "计成本后超额年化在 AUM=0 时已为 -1.86%（<0），按定义容量为 0",
+        "research_equal_drag_ref_aum_yi": 1.2425627145877858
+      },
+      "Y_1.0": {
+        "baseline_half_excess_aum_yuan": 5175385293.154232,
+        "baseline_half_excess_aum_yi": 51.75385293154232,
+        "baseline_target_net_ann": 0.05405658616357767,
+        "research_half_excess_aum_yi": 0.0,
+        "research_capacity_note": "计成本后超额年化在 AUM=0 时已为 -1.86%（<0），按定义容量为 0",
+        "research_equal_drag_ref_aum_yi": 0.7952401373361832
+      }
+    },
+    "y08_milestones": {
+      "0.1亿": {
+        "baseline_net_ann": 0.10586266458675819,
+        "baseline_drag_ann": 0.001933647690821827,
+        "research_net_ann": -0.033817966616636164,
+        "research_drag_ann": 0.015547268565248906
+      },
+      "1亿": {
+        "baseline_net_ann": 0.10169266012788492,
+        "baseline_drag_ann": 0.006103652149695105,
+        "research_net_ann": -0.06661627259622527,
+        "research_drag_ann": 0.04834557454483801
+      },
+      "5亿": {
+        "baseline_net_ann": 0.09419276733539683,
+        "baseline_drag_ann": 0.013603544942183188,
+        "research_net_ann": -0.12316360426336159,
+        "research_drag_ann": 0.10489290621197433
+      },
+      "10亿": {
+        "baseline_net_ann": 0.08860512156990574,
+        "baseline_drag_ann": 0.019191190707674277,
+        "research_net_ann": -0.16332464701143623,
+        "research_drag_ann": 0.14505394896004897
+      },
+      "20亿": {
+        "baseline_net_ann": 0.08074976625726515,
+        "baseline_drag_ann": 0.027046546020314866,
+        "research_net_ann": -0.21706375402092393,
+        "research_drag_ann": 0.19879305596953667
+      },
+      "50亿": {
+        "baseline_net_ann": 0.06532458678982467,
+        "baseline_drag_ann": 0.04247172548775535,
+        "research_net_ann": -0.3138783966541414,
+        "research_drag_ann": 0.29560769860275415
+      },
+      "80亿": {
+        "baseline_net_ann": 0.05433811520668774,
+        "baseline_drag_ann": 0.05345819707089228,
+        "research_net_ann": -0.3762901697614668,
+        "research_drag_ann": 0.35801947171007953
+      },
+      "100亿": {
+        "baseline_net_ann": 0.04819423170545711,
+        "baseline_drag_ann": 0.059602080572122906,
+        "research_net_ann": -0.408980269973772,
+        "research_drag_ann": 0.39070957192238476
+      },
+      "200亿": {
+        "baseline_net_ann": 0.024419235233464898,
+        "baseline_drag_ann": 0.08337707704411512,
+        "research_net_ann": -0.521802954983984,
+        "research_drag_ann": 0.5035322569325967
+      },
+      "500亿": {
+        "baseline_net_ann": -0.02122952884267615,
+        "baseline_drag_ann": 0.12902584112025617,
+        "research_net_ann": -0.6867947736376456,
+        "research_drag_ann": 0.6685240755862584
+      }
+    },
+    "research_ideal_ann0": 0.07598350465804637
+  },
+  "fees": {
+    "comparison_table": [
+      {
+        "plan_id": "Gross",
+        "plan_name": "策略净值(未扣产品费)",
+        "mgmt_fee": 0.0,
+        "custody_fee": 0.0,
+        "perf_fee_rate": 0.0,
+        "perf_basis": "无(含交易成本后策略净值)",
+        "cum_return": 0.45375226368192734,
+        "ann_return": 0.10779631227758002,
+        "ann_vol": 0.1600085924545145,
+        "sharpe": 0.6736907726266212,
+        "max_drawdown": -0.16693526893911415,
+        "tracking_error": 0.1304892132389624,
+        "info_ratio": 0.823665416935112,
+        "terminal_nav": 1.4537522636819273,
+        "fixed_fee_cum_drag": 0.0,
+        "perf_fee_cum_paid": 0.0,
+        "total_fee_cum_drag": 0.0,
+        "ann_fee_drag": 0.0
+      },
+      {
+        "plan_id": "A",
+        "plan_name": "方案A 标准份额",
+        "mgmt_fee": 0.01,
+        "custody_fee": 0.002,
+        "perf_fee_rate": 0.2,
+        "perf_basis": "绝对收益高水位×20%(年度计提)",
+        "cum_return": 0.3084676389581962,
+        "ann_return": 0.07633677407578676,
+        "ann_vol": 0.13892804170759993,
+        "sharpe": 0.5494698776252227,
+        "max_drawdown": -0.1543950700324731,
+        "tracking_error": 0.1272117493373661,
+        "info_ratio": 0.5975856351492056,
+        "terminal_nav": 1.3084676389581962,
+        "fixed_fee_cum_drag": 0.06238098137092707,
+        "perf_fee_cum_paid": 0.07711690973954903,
+        "total_fee_cum_drag": 0.14528462472373116,
+        "ann_fee_drag": 0.03145953820179326
+      },
+      {
+        "plan_id": "B",
+        "plan_name": "方案B 超额计提",
+        "mgmt_fee": 0.01,
+        "custody_fee": 0.002,
+        "perf_fee_rate": 0.2,
+        "perf_basis": "相对沪深300超额高水位×20%(年度计提)",
+        "cum_return": 0.3064707779890725,
+        "ann_return": 0.07588708245786524,
+        "ann_vol": 0.15702138814586827,
+        "sharpe": 0.4832913742130999,
+        "max_drawdown": -0.1788798316485264,
+        "tracking_error": 0.12275532672169415,
+        "info_ratio": 0.6156166451303546,
+        "terminal_nav": 1.3064707779890725,
+        "fixed_fee_cum_drag": 0.06238098137092707,
+        "perf_fee_cum_paid": 0.07262237292308106,
+        "total_fee_cum_drag": 0.14728148569285482,
+        "ann_fee_drag": 0.03190922981971478
+      },
+      {
+        "plan_id": "C",
+        "plan_name": "方案C 机构份额",
+        "mgmt_fee": 0.006,
+        "custody_fee": 0.0015,
+        "perf_fee_rate": 0.15,
+        "perf_basis": "相对沪深300超额高水位×15%(年度计提)",
+        "cum_return": 0.34634709858096246,
+        "ann_return": 0.0847742941792875,
+        "ann_vol": 0.15763906904596425,
+        "sharpe": 0.5377746436358939,
+        "max_drawdown": -0.17488071903200275,
+        "tracking_error": 0.12455395377649277,
+        "info_ratio": 0.6780791100479056,
+        "terminal_nav": 1.3463470985809625,
+        "fixed_fee_cum_drag": 0.03930778450158057,
+        "perf_fee_cum_paid": 0.05802386062434704,
+        "total_fee_cum_drag": 0.10740516510096487,
+        "ann_fee_drag": 0.023022018098292518
+      },
+      {
+        "plan_id": "D",
+        "plan_name": "方案D 纯管理费",
+        "mgmt_fee": 0.015,
+        "custody_fee": 0.002,
+        "perf_fee_rate": 0.0,
+        "perf_basis": "无业绩报酬",
+        "cum_return": 0.36617509509054624,
+        "ann_return": 0.08912232373271167,
+        "ann_vol": 0.15999779822407115,
+        "sharpe": 0.5570221885672394,
+        "max_drawdown": -0.17554537413524884,
+        "tracking_error": 0.13048603942655973,
+        "info_ratio": 0.6805744436217479,
+        "terminal_nav": 1.3661750950905462,
+        "fixed_fee_cum_drag": 0.0875771685913811,
+        "perf_fee_cum_paid": 0.0,
+        "total_fee_cum_drag": 0.0875771685913811,
+        "ann_fee_drag": 0.018673988544868347
+      }
+    ],
+    "details": {
+      "A": {
+        "cum_return": 0.3084676389581962,
+        "ann_return": 0.07633677407578676,
+        "ann_vol": 0.13892804170759993,
+        "sharpe": 0.5494698776252227,
+        "max_drawdown": -0.1543950700324731,
+        "tracking_error": 0.1272117493373661,
+        "info_ratio": 0.5975856351492056,
+        "terminal_nav": 1.3084676389581962,
+        "gross_cum_return": 0.45375226368192734,
+        "gross_ann_return": 0.10779631227758002,
+        "fixed_fee_cum_drag": 0.06238098137092707,
+        "perf_fee_cum_paid": 0.07711690973954903,
+        "total_fee_cum_drag": 0.14528462472373116,
+        "ann_fee_drag": 0.03145953820179326,
+        "crystallization_events": [
+          {
+            "date": "2024-12-31",
+            "perf_fee_paid": 0.05064349111119833,
+            "post_nav": 1.2025739644447933
+          },
+          {
+            "date": "2025-12-31",
+            "perf_fee_paid": 0.024292256195217955,
+            "post_nav": 1.2997429892256651
+          },
+          {
+            "date": "2026-10-30",
+            "perf_fee_paid": 0.0021811624331327553,
+            "post_nav": 1.3084676389581962
+          }
+        ]
+      },
+      "B": {
+        "cum_return": 0.3064707779890725,
+        "ann_return": 0.07588708245786524,
+        "ann_vol": 0.15702138814586827,
+        "sharpe": 0.4832913742130999,
+        "max_drawdown": -0.1788798316485264,
+        "tracking_error": 0.12275532672169415,
+        "info_ratio": 0.6156166451303546,
+        "terminal_nav": 1.3064707779890725,
+        "gross_cum_return": 0.45375226368192734,
+        "gross_ann_return": 0.10779631227758002,
+        "fixed_fee_cum_drag": 0.06238098137092707,
+        "perf_fee_cum_paid": 0.07262237292308106,
+        "total_fee_cum_drag": 0.14728148569285482,
+        "ann_fee_drag": 0.03190922981971478,
+        "crystallization_events": [
+          {
+            "date": "2023-12-29",
+            "perf_fee_paid": 0.020655630408151646,
+            "post_nav": 0.944517942479558
+          },
+          {
+            "date": "2024-12-31",
+            "perf_fee_paid": 0.02863856799390282,
+            "post_nav": 1.1977588447115997
+          },
+          {
+            "date": "2026-10-30",
+            "perf_fee_paid": 0.023328174521026587,
+            "post_nav": 1.3064707779890725
+          }
+        ]
+      },
+      "C": {
+        "cum_return": 0.34634709858096246,
+        "ann_return": 0.0847742941792875,
+        "ann_vol": 0.15763906904596425,
+        "sharpe": 0.5377746436358939,
+        "max_drawdown": -0.17488071903200275,
+        "tracking_error": 0.12455395377649277,
+        "info_ratio": 0.6780791100479056,
+        "terminal_nav": 1.3463470985809625,
+        "gross_cum_return": 0.45375226368192734,
+        "gross_ann_return": 0.10779631227758002,
+        "fixed_fee_cum_drag": 0.03930778450158057,
+        "perf_fee_cum_paid": 0.05802386062434704,
+        "total_fee_cum_drag": 0.10740516510096487,
+        "ann_fee_drag": 0.023022018098292518,
+        "crystallization_events": [
+          {
+            "date": "2023-12-29",
+            "perf_fee_paid": 0.016108354230192523,
+            "post_nav": 0.9531760948180423
+          },
+          {
+            "date": "2024-12-31",
+            "perf_fee_paid": 0.02247984048204262,
+            "post_nav": 1.2205197923711244
+          },
+          {
+            "date": "2026-10-30",
+            "perf_fee_paid": 0.019435665912111905,
+            "post_nav": 1.3463470985809625
+          }
+        ]
+      },
+      "D": {
+        "cum_return": 0.36617509509054624,
+        "ann_return": 0.08912232373271167,
+        "ann_vol": 0.15999779822407115,
+        "sharpe": 0.5570221885672394,
+        "max_drawdown": -0.17554537413524884,
+        "tracking_error": 0.13048603942655973,
+        "info_ratio": 0.6805744436217479,
+        "terminal_nav": 1.3661750950905462,
+        "gross_cum_return": 0.45375226368192734,
+        "gross_ann_return": 0.10779631227758002,
+        "fixed_fee_cum_drag": 0.0875771685913811,
+        "perf_fee_cum_paid": 0.0,
+        "total_fee_cum_drag": 0.0875771685913811,
+        "ann_fee_drag": 0.018673988544868347,
+        "crystallization_events": []
+      }
+    }
+  }
+}

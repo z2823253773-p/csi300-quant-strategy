@@ -1,0 +1,15 @@
+# Unified Python 3.12 dependencies for CSI 300 Quantitative Strategy (v2.0)
+numpy>=2.0
+pandas>=2.2
+pyarrow>=17.0
+matplotlib>=3.9
+pillow>=10.0
+openpyxl>=3.1
+xlsxwriter>=3.2
+baostock>=0.8.9
+akshare>=1.15
+python-docx>=1.1
+python-pptx>=1.0
+pypdf>=5.0
+requests>=2.32
+tqdm>=4.66

@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+*.py[cod]
+quant_project_data/raw/
+quant_project_data/processed/

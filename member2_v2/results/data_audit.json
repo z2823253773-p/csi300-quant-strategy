@@ -1,0 +1,44 @@
+{
+  "panel_rows": 940696,
+  "new_fields": [
+    "can_sell_held",
+    "industry_age_days",
+    "ln_float_mv_proxy",
+    "pbMRQ_age_days",
+    "peTTM_age_days",
+    "psTTM_age_days"
+  ],
+  "unknown_all_fraction": 0.1962876423414153,
+  "unknown_tradable_fraction": 0.21151300269701215,
+  "old_industry_schemes": {
+    "申万行业变更历史": 756049,
+    "证监会行业分类": 133019,
+    "NaN": 51628
+  },
+  "new_industry_schemes": {
+    "申万行业变更历史": 756049,
+    "missing": 184647
+  },
+  "age_summary": {
+    "peTTM_age_days": {
+      "count": 940696.0,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "25%": 0.0,
+      "50%": 0.0,
+      "75%": 0.0,
+      "max": 0.0
+    },
+    "pbMRQ_age_days": {
+      "count": 940696.0,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "25%": 0.0,
+      "50%": 0.0,
+      "75%": 0.0,
+      "max": 0.0
+    }
+  }
+}

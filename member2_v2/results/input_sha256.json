@@ -1,0 +1,22 @@
+{
+  "benchmark_daily.parquet": "e2f5ffbd09764013894e4a2ac24b9462675a870350c1e9251200a4aea586ce2c",
+  "clean_daily_panel.parquet": "aac5f49e7986a13f5bbc83e3ff05716c67a19b017f78348722dbc975f5e1d7eb",
+  "matrix_amount.parquet": "a47084b654897676a680f263efdb3aee44fc24d82ea8c91f6ca9ad0725581875",
+  "matrix_bp.parquet": "33fa5e24c99d1b48a5b83de04d00eaaea6eba02d8400cb5b2d5c20a8cfb4ef3c",
+  "matrix_can_sell_held.parquet": "e9e5991b2fdb37378fb39296bc4efd1c1352936bf3bd792cffacd2244311da13",
+  "matrix_close_hfq.parquet": "aca38e28753825f1b4ce3342832879ca0688a57769e052c4b570f441cde1ac54",
+  "matrix_ep.parquet": "bd8c3e0ab5ff875560cd5e66d88908eac4076bf91f5b8b2ad258f0f43ca1586a",
+  "matrix_high_hfq.parquet": "72832235889a77a78b48ba91ed178fbd621ee18b6f07446121511d108d98a497",
+  "matrix_is_limit_down.parquet": "09339bbe5702ad72f9e968bda7653a525800271c8a1d375c1e50e65512ac0af5",
+  "matrix_is_limit_up.parquet": "74f6fa25a6dfb65b31bdd3bfdeeacb21fc119c3cd9bfe80743337a77739b3736",
+  "matrix_ln_float_mv_proxy.parquet": "0b834fcb80cf9d2a142d6c470400661b070945012f43ae6c2c6823f17e0ca180",
+  "matrix_ln_mkt_cap.parquet": "0b834fcb80cf9d2a142d6c470400661b070945012f43ae6c2c6823f17e0ca180",
+  "matrix_low_hfq.parquet": "ff05d8e83c5254f58c26735a8cf900656ae3ec6379af46d4091818065b1ac190",
+  "matrix_open_hfq.parquet": "1f37f7146e9522b07b6d5c3c001a1e15865addc1ed9e7846be17878d5e509250",
+  "matrix_returns.parquet": "685c659e6bbe4b5ea653d12e8e99683245075d6d301fb87e121e70b5025387ad",
+  "matrix_tradable_mask.parquet": "47c320b42e00dbde51a43f0b1504f6b76e15f66d31eaa0ceec2bd206605c0a17",
+  "matrix_turn.parquet": "860894cd3ba6e5bee5bd0f41cc9bd0a15103f7000b2be1bd03224dc8a6ef3606",
+  "matrix_volume.parquet": "d88aa0655cbc8938851bc8e666f0ef7094b18ac1b4644c2cf13abd18880ba78d",
+  "matrix_vwap_hfq.parquet": "05412262c7f61dab4f1bcdcf0f1e315b05401ed20e673830927c52b9007606bd",
+  "RUN_METADATA.json": "92755a7a819e770fcb8ea2c8358b20b7a1e41cec5032bf4f116137e5cce8ed4a"
+}

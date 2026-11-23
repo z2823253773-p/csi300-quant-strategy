@@ -1,0 +1,201 @@
+{
+  "data_audit": {
+    "baostock_v3": {
+      "label": "baostock_v3_quant_project",
+      "path": "/Users/henryz/Desktop/量化课程/大作业/01_组员上游交付/组员1_数据/quant_project/quant_project_data/processed",
+      "matrix_count": 18,
+      "matrix_shape": [
+        1897,
+        520
+      ],
+      "matrix_alignment_pass": true,
+      "matrix_mismatches": [],
+      "panel_rows": 940696,
+      "panel_cols_count": 71,
+      "missing_required_panel_cols": [],
+      "raw_valid_cols": [
+        "raw_valid_open",
+        "raw_valid_high",
+        "raw_valid_low",
+        "raw_valid_close",
+        "raw_valid_preclose",
+        "raw_valid_close_hfq",
+        "raw_valid_volume",
+        "raw_valid_amount",
+        "raw_valid_turn",
+        "raw_valid_peTTM",
+        "raw_valid_pbMRQ",
+        "raw_valid_psTTM"
+      ],
+      "benchmark_cols": [
+        "trade_date",
+        "benchmark_code",
+        "benchmark_open",
+        "benchmark_close",
+        "benchmark_ret",
+        "benchmark_intraday_ret"
+      ],
+      "all_interface1_checks_pass": true
+    },
+    "tushare_v3_hs300": {
+      "label": "tushare_v3_hs300",
+      "path": "/Users/henryz/Desktop/量化课程/大作业/01_组员上游交付/组员1_数据/Tushare_双股票池完整数据与代码/tushare_data/hs300/processed",
+      "matrix_count": 18,
+      "matrix_shape": [
+        1897,
+        520
+      ],
+      "matrix_alignment_pass": true,
+      "matrix_mismatches": [],
+      "panel_rows": 940701,
+      "panel_cols_count": 65,
+      "missing_required_panel_cols": [],
+      "raw_valid_cols": [
+        "raw_valid_open",
+        "raw_valid_high",
+        "raw_valid_low",
+        "raw_valid_close",
+        "raw_valid_preclose",
+        "raw_valid_close_hfq",
+        "raw_valid_volume",
+        "raw_valid_amount",
+        "raw_valid_turn",
+        "raw_valid_peTTM",
+        "raw_valid_pbMRQ",
+        "raw_valid_psTTM"
+      ],
+      "benchmark_cols": [
+        "trade_date",
+        "benchmark_code",
+        "benchmark_open",
+        "benchmark_close",
+        "benchmark_ret",
+        "benchmark_intraday_ret"
+      ],
+      "all_interface1_checks_pass": true
+    }
+  },
+  "hs300_intraday_3_0": {
+    "first_day_date": "2023-01-09",
+    "first_day_intraday_ret": 0.0036493429582087344,
+    "first_day_close_to_close_ret_old_bug": 0.00809643273148275,
+    "chain_error": 8.881784197001252e-16,
+    "stages": {
+      "all": {
+        "n_days": 921,
+        "terminal_nav": 0.9967420510747932,
+        "cum_return": -0.0032579489252068106,
+        "ann_geom": -0.0008924825363579858,
+        "ann_vol": 0.17417279880977268,
+        "sharpe_arith_rf0": 0.08172975416089243,
+        "geom_over_vol": -0.005124121231655315,
+        "max_drawdown": -0.24803913984688264,
+        "dd_recovery_days": 409
+      },
+      "validation": {
+        "n_days": 480,
+        "terminal_nav": 0.9840898950813897,
+        "cum_return": -0.015910104918610335,
+        "ann_geom": -0.008384616761535013,
+        "ann_vol": 0.17895075936864385,
+        "sharpe_arith_rf0": 0.04153411687998608,
+        "geom_over_vol": -0.04685432345253397,
+        "max_drawdown": -0.24803913984688264,
+        "dd_recovery_days": 409
+      },
+      "seen": {
+        "n_days": 441,
+        "terminal_nav": 1.0128567075595853,
+        "cum_return": 0.012856707559585345,
+        "ann_geom": 0.007326572795177455,
+        "ann_vol": 0.16902050964424326,
+        "sharpe_arith_rf0": 0.12802720429591166,
+        "geom_over_vol": 0.04334724117563323,
+        "max_drawdown": -0.2122983411131737,
+        "dd_recovery_days": null
+      }
+    }
+  },
+  "m0a_baseline_reconciled_vs_hs300_intraday": {
+    "all": {
+      "n_days": 921,
+      "terminal_nav": 1.453752263681937,
+      "cum_return": 0.4537522636819371,
+      "ann_geom": 0.10779631227758202,
+      "ann_vol": 0.1600085924545145,
+      "sharpe_arith_rf0": 0.7197161995702595,
+      "geom_over_vol": 0.6736907726266337,
+      "max_drawdown": -0.1669352689391137,
+      "dd_recovery_days": 252,
+      "excess_vs_hs300_cum": 0.4570102126071439,
+      "excess_vs_hs300_ann": 0.10868879481394,
+      "te_vs_hs300": 0.13042814372977066,
+      "ir_vs_hs300": 0.8333231747829547
+    },
+    "validation": {
+      "n_days": 480,
+      "terminal_nav": 1.2821930034474471,
+      "cum_return": 0.28219300344744713,
+      "ann_geom": 0.13939821942894004,
+      "ann_vol": 0.1815163086326141,
+      "sharpe_arith_rf0": 0.8092150291104898,
+      "geom_over_vol": 0.7679652615186201,
+      "max_drawdown": -0.1669352689391137,
+      "dd_recovery_days": 252,
+      "excess_vs_hs300_cum": 0.29810310836605747,
+      "excess_vs_hs300_ann": 0.14778283619047505,
+      "te_vs_hs300": 0.09294350733038097,
+      "ir_vs_hs300": 1.5900286145342015
+    },
+    "seen": {
+      "n_days": 441,
+      "terminal_nav": 1.1338014322127867,
+      "cum_return": 0.13380143221278673,
+      "ann_geom": 0.07439505482889652,
+      "ann_vol": 0.13287342228531054,
+      "sharpe_arith_rf0": 0.6068197690091095,
+      "geom_over_vol": 0.5598941725844376,
+      "max_drawdown": -0.13518770459458285,
+      "dd_recovery_days": null,
+      "excess_vs_hs300_cum": 0.12094472465320139,
+      "excess_vs_hs300_ann": 0.06706848203371907,
+      "te_vs_hs300": 0.161715494283683,
+      "ir_vs_hs300": 0.41473133004847906
+    }
+  },
+  "m0b_research_reconciled": {
+    "all": {
+      "n_days": 921,
+      "terminal_nav": 0.9348281174602974,
+      "cum_return": -0.06517188253970263,
+      "ann_geom": -0.018270698051388923,
+      "ann_vol": 0.16257482956584537,
+      "sharpe_arith_rf0": -0.03249593203403468,
+      "geom_over_vol": -0.1123833135804642,
+      "max_drawdown": -0.27109101781372946,
+      "dd_recovery_days": 546
+    },
+    "validation": {
+      "n_days": 480,
+      "terminal_nav": 0.9744340970453215,
+      "cum_return": -0.025565902954678532,
+      "ann_geom": -0.013504637637077876,
+      "ann_vol": 0.18655204173331036,
+      "sharpe_arith_rf0": 0.01943920735625838,
+      "geom_over_vol": -0.07239072545978206,
+      "max_drawdown": -0.27109101781372946,
+      "dd_recovery_days": null
+    },
+    "seen": {
+      "n_days": 441,
+      "terminal_nav": 0.9593548915158894,
+      "cum_return": -0.040645108484110626,
+      "ann_geom": -0.023432079688848972,
+      "ann_vol": 0.13182129983570287,
+      "sharpe_arith_rf0": -0.11364153681292666,
+      "geom_over_vol": -0.17775639989936254,
+      "max_drawdown": -0.21336374804810887,
+      "dd_recovery_days": null
+    }
+  }
+}

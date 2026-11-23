@@ -1,0 +1,28 @@
+# Python & virtual environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# macOS / IDE clutter
+.DS_Store
+.vscode/
+.idea/
+
+# Large raw/processed data files & archives (>100MB GitHub limit)
+# Data is reproduced via quant_project/run_pipeline.py
+*.zip
+*.tar.gz
+*.parquet
+raw/
+tushare_cache/
+cache/
+
+# Temporary / preview builds
+**/preview/
+**/preview_*/
+*.tmp
+~$*.docx
+~$*.pptx

@@ -1,0 +1,16 @@
+﻿file,cells,changed
+matrix_amount.parquet,986440,0
+matrix_bp.parquet,986440,0
+matrix_close_hfq.parquet,986440,0
+matrix_ep.parquet,986440,0
+matrix_high_hfq.parquet,986440,0
+matrix_is_limit_down.parquet,986440,0
+matrix_is_limit_up.parquet,986440,0
+matrix_ln_mkt_cap.parquet,986440,0
+matrix_low_hfq.parquet,986440,0
+matrix_open_hfq.parquet,986440,0
+matrix_returns.parquet,986440,0
+matrix_tradable_mask.parquet,986440,0
+matrix_turn.parquet,986440,0
+matrix_volume.parquet,986440,0
+matrix_vwap_hfq.parquet,986440,0

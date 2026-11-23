@@ -1,0 +1,47 @@
+{
+  "selected": [
+    "alpha006",
+    "alpha033"
+  ],
+  "directions": {
+    "alpha006": 1,
+    "alpha033": 1
+  },
+  "train_end": "2022-12-31",
+  "validation_end": "2024-12-31",
+  "test_start": "2025-01-01",
+  "horizon": 5,
+  "rebalance": 5,
+  "top_n": 50,
+  "alpha_weight": 0.5,
+  "selection": "Holm p<=0.05, abs corr<0.7, max3; primary 5d neutral RankIC",
+  "metadata": {
+    "mode": "online",
+    "source_variant": "baostock_shenwan_sina_cached",
+    "sample_start": "2019-01-02",
+    "sample_end": "2026-10-30",
+    "rows": 940696,
+    "stocks": 520,
+    "dates": 1897,
+    "tradable_rows": 568036,
+    "market_cap_proxy_fraction": 1.0,
+    "valuation_max_age_days": 90,
+    "valuation_age_days": {
+      "peTTM_age_days": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "pbMRQ_age_days": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    "industry_max_age_days": 45,
+    "industry_unclassified_fraction": 0.1962876423414153,
+    "industry_schemes": [
+      "申万行业变更历史"
+    ]
+  }
+}

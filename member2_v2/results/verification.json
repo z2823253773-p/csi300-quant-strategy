@@ -1,0 +1,21 @@
+{
+  "matrix_alignment": "PASS",
+  "unique_panel_keys": "PASS",
+  "factor_prefix_causality": "PASS",
+  "label_alignment": "PASS",
+  "released_scores_start": "2023-01-03 or first available 2023 session",
+  "selected": [
+    "alpha006",
+    "alpha033"
+  ],
+  "unit_tests": "6 passed",
+  "target_weights_sum": "PASS",
+  "execution_after_signal": "PASS",
+  "no_duplicate_targets": "PASS",
+  "no_infinite_signals": "PASS",
+  "cost_grid_combinations": 120,
+  "cost_monotonicity": "PASS",
+  "group_missing_labels_accounted": "PASS",
+  "markdown_local_links": "PASS",
+  "format": "Markdown only; PNG figures"
+}
