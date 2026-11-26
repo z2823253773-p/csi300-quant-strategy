@@ -1,0 +1,58 @@
+{
+  "hs300": {
+    "pool": "hs300",
+    "constituent_eff_date": "2026-10-08",
+    "n_constituents": 300,
+    "n_quotes": 300,
+    "n_klines": 299,
+    "kline_failures": 1,
+    "signal_date": "2026-11-25",
+    "n_traded_non_st": 299,
+    "n_scored_m4": 274,
+    "parity_20261029_corr": 0.999997,
+    "parity_20261029_max_abs_diff": 0.021551,
+    "zh3689205_kept_count": 26,
+    "zh3689205_sell_count": 4,
+    "zh3689205_buy_count": 4,
+    "zh3689205_one_way_turnover_pct": 16.0,
+    "hs300_top_industries": {
+      "银行": 50,
+      "建筑装饰": 21,
+      "机械设备": 9,
+      "汽车": 7,
+      "通信": 7,
+      "医药生物": 3,
+      "非银金融": 3
+    }
+  },
+  "zz500": {
+    "pool": "zz500",
+    "constituent_eff_date": "2026-10-08",
+    "n_constituents": 500,
+    "n_quotes": 500,
+    "n_klines": 499,
+    "kline_failures": 1,
+    "signal_date": "2026-11-25",
+    "n_traded_non_st": 498,
+    "n_scored_m4": 442,
+    "parity_20261029_corr": 0.999998,
+    "parity_20261029_max_abs_diff": 0.027899,
+    "zz500_top_industries": {
+      "非银金融": 16,
+      "机械设备": 13,
+      "银行": 11,
+      "汽车": 10,
+      "医药生物": 9,
+      "电力设备": 7,
+      "传媒": 6,
+      "商贸零售": 4,
+      "国防军工": 4,
+      "建筑装饰": 4,
+      "有色金属": 4,
+      "交通运输": 3,
+      "建筑材料": 3,
+      "电子": 3,
+      "钢铁": 3
+    }
+  }
+}

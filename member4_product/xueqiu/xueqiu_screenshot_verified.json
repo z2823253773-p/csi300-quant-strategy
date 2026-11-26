@@ -1,0 +1,31 @@
+{
+  "record_type": "human_verified_platform_screenshot_record",
+  "portfolio_code": "ZH3689205",
+  "portfolio_name": "沪深300价值精选",
+  "portfolio_url": "https://www.xueqiu.com/P/ZH3689205",
+  "verified_date": "2026-11-25",
+  "source_note": "雪球模拟组合平台未开放自动化历史净值导出接口，本记录由研究团队根据本地归档平台页面截图人工逐项核验录入，供技术报告正文、图表与溯源文档统一读取引用。",
+  "initial_build_record": {
+    "rebalance_timestamp": "2026-11-18 18:30:50",
+    "base_strategy_caliber": "M0a 30股分层映射（前10只各4% + 第11–30只各3%）",
+    "n_holdings": 30,
+    "top_tier_count": 10,
+    "top_tier_weight_pct": 4,
+    "second_tier_count": 20,
+    "second_tier_weight_pct": 3,
+    "total_target_weight_pct": 100.0,
+    "screenshot_relpath": "screenshots/xueqiu_ZH3689205_rebalance_20261118.png",
+    "starting_portfolio_match_note": "逐只按股票代码核对确认，2026-11-18 建仓截图中的 30 只标的及 4%/3% 目标权重，与生成 2026-11-25 拟议切换清单（HS300_M4_2026-11-25_ZH3689205调仓操作清单.csv）所采用的起始持仓完全一致。"
+  },
+  "latest_archived_snapshot": {
+    "snapshot_date": "2026-11-23",
+    "unit_nav": 0.9909,
+    "cum_return": -0.0091,
+    "benchmark_name": "沪深300",
+    "benchmark_return": -0.0064,
+    "excess_vs_benchmark": -0.0027,
+    "overview_screenshot_relpath": "screenshots/xueqiu_ZH3689205_overview_20261123.png",
+    "composite_screenshot_relpath": "screenshots/xueqiu_ZH3689205_live_20261123.png"
+  },
+  "m4_switch_status_note": "本地归档截图支持平台运行披露至 2026-11-23；2026-11-25 生成的 M4 30股（前45名保留缓冲）切换指令单（拟议切换单边换手 16.00%）在平台上的实际生效日以雪球调仓成交回执为准。"
+}

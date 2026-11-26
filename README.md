@@ -2,7 +2,7 @@
 
 **《量化交易技术理论与实践》期末大作业**  
 **角色定位**：私募证券投资基金量化投研团队 ｜ **指导教师**：肖亮海  
-**公开模拟组合（雪球）**：[ZH3689205](https://www.xueqiu.com/P/ZH3689205) ｜ **版本**：`v3.1`（全组联审定稿版）
+**公开模拟组合（雪球）**：[ZH3689205](https://www.xueqiu.com/P/ZH3689205) ｜ **版本**：`v3.2`（全组联审终版定稿）
 
 ---
 
@@ -13,7 +13,7 @@
 | 组员 1 | 李钰鹏 | 2024104286 | 双股票池数据工程（Tushare 个股行情/估值/复权/ST + 既有动态成分/申万行业/指数）、时效清洗与 SHA-256 校验 | [`member1_data/`](member1_data/) |
 | 组员 2 | 刘宇睿 | 2024101054 | Alpha101 101 编号本地实现全量重筛、Holm 多重校正、`new012_amt_ema10` 改造、M0a–M5 消融信号与 Alpha015 覆盖诊断 | [`member2_signals/`](member2_signals/) |
 | 组员 3 | 张沐 | 2024101056 | 3.0 开盘无前视账户回测（63 组账户、残差 0.0）、双印花税情景、行业暴露与 7 因子滞后持仓 FM 归因 | [`member3_backtest/`](member3_backtest/) |
-| 组员 4 | 张恒瑞 | 2024101062 | 双池三口径容量与压测、四档 HWM 产品费率、雪球 30 只前 45 缓冲映射回测、动态报告/17 页 PPT 与仓库整合 | [`member4_product/`](member4_product/) |
+| 组员 4 | 张恒瑞 | 2024101062 | 双池容量执行情景与压测、四档 HWM 产品费率、雪球 30 只前 45 缓冲映射回测、29 页 XeLaTeX 终版报告/15+5 页 PPT 与仓库整合 | [`member4_product/`](member4_product/) |
 
 ---
 
@@ -26,9 +26,9 @@
 - **两项核心工程发现**：
   1. **Alpha015 低覆盖约束诊断**：沪深 300 原 M1 在后续 184 次调仓退出的 `3,789` 个持股席位中，有 `3,605` 次（`95.1%`）仅因 `Alpha015` 缺失退出；解除该入池约束后，同一 M1 目标替换率由 `41.18%` 降至 `1.03%`，实际单边换手由 `41.91%` 降至 `2.35%`，毛收益由 `+27.58%` 升至 `+53.41%`，净收益由 `-3.44%` 升至 `+51.11%`（原含 015 同池内 `M3a -1.83%` 较 `M1 -3.44%` 差 `+1.62` 个百分点）。
   2. **改造 012 同池双面检验**：`new012_amt_ema10` 在两池三段单因子平均 IC 均为正，但扣费后组合改善仅见于沪深 300（同池 `M3b` 较 `M2` 增量 **`+8.58` 个百分点**；中证 500 同配方为 **`-6.93` 个百分点**）。
-- **产品化容量与费率**：
-  - 5% 参与率 P10 硬约束下，沪深 300 M4 的 1 日 / 3 日调仓与 5 日清仓容量为 **`3.33 / 9.99 / 6.63` 亿元**（约为中证 500 M4 `1.09 / 3.27 / 2.64` 亿元的 3 倍）；硬约束稳健首期规模定为 **`3–6` 亿元**（中证 500 `1–2.5` 亿元），**`10–15` 亿元**列为待多日拆单压力测试情景（详见 `member4_product/results/capacity_stress_v3.csv`）。
-  - 机构 C 档费率（`0.60%` 管理费 + `0.15%` 托管费 + `15%` 超额高水位）下，沪深 300 M4 投资者到手累计 **`+43.51%`**、年化 **`+10.39%`**、IR **`0.730`**。
+- **产品化容量执行情景与历史模拟费后表现**：
+  - 5% 日均成交参与率上限下，沪深 300 M4 的单日调仓、假设 3 日拆单与 5 日清仓 P10 容量指标为 **`3.33 / 9.99 / 6.63` 亿元**（约为中证 500 M4 `1.09 / 3.27 / 2.64` 亿元的 3 倍）。逐期超限压测显示：`3.00` 亿元情景下假设 3 日拆单与 5 日清仓均 `0` 期超限（单日调仓 `15/184` 期超限）；`5.00` 亿元情景下单日调仓 `38/184` 期、假设 3 日拆单 `4/184` 期、5 日清仓 `1/185` 期（最长 `5.013` 天）超限；`10.00` 亿元与 `15.00` 亿元情景下假设 3 日拆单超限升至 `18/184` 与 `38/184` 期、5 日清仓超限升至 `79/185` 与 `142/185` 期（详见 `member4_product/results/capacity_stress_v3.csv`）。主回测采用次日开盘集中撮合，多日拆单属独立执行情景，首期募资宜控制在 `3–6` 亿元低超限情景并配合尾部拆单。
+  - 机构 C 档费率（`0.60%` 管理费 + `0.15%` 托管费，相对沪深 300 价格指数超额收益按年度高水位计提 `15%`）下，扣除产品费用后的历史模拟累计收益为 **`+43.51%`**、几何年化 **`+10.39%`**、日频算术 IR **`0.730`**，产品层年化总费率拖累为 **`2.66` 个百分点**。
 
 ---
 
@@ -40,7 +40,8 @@ csi300-quant-strategy/
 ├── requirements.txt                           # Python 3.12 统一依赖
 ├── docs/
 │   ├── PRD_模型3.0规格书与跨组接口契约.md      # 全组接口契约与红线规范
-│   └── 联审修订回执_v3.1.md                    # 逐条落实联审意见清单
+│   ├── 终版定稿说明_v3.2.md                    # 29 页 XeLaTeX 报告与 15+5 页路演定稿说明
+│   └── 联审修订回执_v3.1.md                    # 历史阶段联审回执留档（已被 v3.2 替代）
 ├── member1_data/                              # 阶段 1：数据拉取与清洗脚本 + 2.25 MB 历史 seed
 │   ├── fetch_tushare.py                       # Tushare 双池主拉取入口
 │   ├── src/                                   # 清洗、复权、时效与导出模块
@@ -55,12 +56,12 @@ csi300-quant-strategy/
 │   ├── code/member3_official_ref/             # 组员 3 随包参考实现（留档交叉复算差异）
 │   └── results/                               # metrics_v3.csv, decomp_v3.csv, daily_nav_*.csv 等
 └── member4_product/                           # 阶段 4：双池容量/压测、四档费率、雪球映射、报告与 PPT
-    ├── code/                                  # product_analysis_v3.py, xueqiu_export_v3.py, make_figures_v3.py, generate_report_v3_md.py, build_report.py, build_deck_v3.py
+    ├── code/                                  # product_analysis_v3.py, xueqiu_export_v3.py, make_figures_report_tex.py, build_report_tex_v3.py, make_figures_v3_brand.py, build_deck_v3.py
     ├── results/                               # 费率、容量、压测、汇总 JSON/CSV
-    ├── xueqiu/                                # 2026-10-30 历史末期持仓清单、近 8 期调仓、30 只映射回测
-    ├── figures/{report_v3,slide_v3}/          # 10 张 × 2 套 300 DPI 核心图表
-    ├── report/                                # REPORT_V3_FINAL.{md,docx,pdf}（29 页终版技术报告）
-    └── deck/                                  # 路演_v3.{pptx,pdf}（17 页路演）与逐页讲稿_v3.md
+    ├── xueqiu/                                # 历史末期持仓、近8期调仓、30只映射回测、2026-11-25拟议切换单与截图人工核验记录
+    ├── figures/{report_tex,slide_v3_brand}/   # 11 张矢量 PDF 研报图 + 12 张 300 DPI 暖白路演图
+    ├── report/                                # REPORT_V3_FINAL.{tex,pdf}（29 页券商研报级 XeLaTeX 终版技术报告）
+    └── deck/                                  # 路演_v3.{pptx,pdf}（15 页主路演）、技术备查_v3.{pptx,pdf}（5 页备查）与逐页讲稿_v3.md
 ```
 
 > **关于大文件与数据获取**：仓库体积精简控制在 ~30 MB（单文件均 `< 7 MB`），已通过 `.gitignore` 排除体积达数百 MB 的日线/因子/权重 `.parquet` 中间矩阵，同时**完整保留了 2.25 MB 的 `member1_data/seed/` 历史种子数据与全部阶段 2–4 的轻量化 CSV/JSON/图表/报告产出**。
@@ -81,22 +82,16 @@ pip install -r requirements.txt
 
 ### 方式 A：无需 Tushare Token —— 直接基于已提交的阶段 2–4 CSV/JSON 验证图表、报告与 PPT
 
-克隆后即可在任意干净目录直接重跑全部图表、动态报告生成（含 7 因子 FM 归因闭合断言 `< 1e-10`）与 17 页 PPT：
+克隆后即可在任意干净目录直接重跑全部矢量研报图表、动态生成并编译 29 页 XeLaTeX 终版 PDF 技术报告（内置页数、行距、全类型 `Overfull \hbox` 与 7 因子 FM 归因闭合 `< 1e-10` 自动断言，需本机已安装 TeX Live `xelatex`）及 15 页路演 PPT（导出 PDF 需安装 LibreOffice `soffice`）：
 
 ```bash
-python member4_product/code/make_figures_v3.py
-python member4_product/code/generate_report_v3_md.py
+python member4_product/code/make_figures_report_tex.py
+python member4_product/code/build_report_tex_v3.py
+python member4_product/code/make_figures_v3_brand.py
 python member4_product/code/build_deck_v3.py
 ```
 
-如需从 Markdown 重新编译 Word/PDF（需本机已安装 `pandoc` 与 LibreOffice `soffice`）：
-
-```bash
-python member4_product/code/build_report.py \
-  --md member4_product/report/REPORT_V3_FINAL.md \
-  --docx member4_product/report/REPORT_V3_FINAL.docx \
-  --pdf member4_product/report/REPORT_V3_FINAL.pdf
-```
+> **跨平台字体配置说明**：`build_report_tex_v3.py` 生成的 `REPORT_V3_FINAL.tex` 内置 `\IfFileExists` 跨平台字体分支——在 **macOS** 环境下优先调用系统原生 `/System/Library/Fonts/Supplemental/Songti.ttc`（精确指定 `FontIndex=6` 常规体与 `FontIndex=1` 原生粗体）、`/System/Library/Fonts/STHeiti Medium.ttc` 与 `Times New Roman.ttf`；在 **Linux / Windows** 标准 TeX Live 环境下自动回退至 TeX Live 内置开源字体集 `FandolSong`、`FandolHei`、`TeX Gyre Termes` 与 `TeX Gyre Heros`，无需手动改码即可跨平台编译（跨系统字体度量差异可能导致分页微调 1 页属正常现象，逐页精确版式复现建议在 macOS + TeX Live 环境执行）。
 
 ### 方式 B：从零全链路端到端复现（阶段 1 → 阶段 4，需自备 Tushare Token）
 
@@ -120,11 +115,12 @@ python member3_backtest/code/run_backtest_v3.py \
   --m2 member2_signals \
   --out member3_backtest/results
 
-# 阶段 4：运行双池容量/压测、四档 HWM 费率、雪球 30 只前 45 缓冲回测、图表、报告与 PPT
+# 阶段 4：运行双池容量/压测、四档 HWM 费率、雪球 30 只前 45 缓冲回测、矢量图表、XeLaTeX 终版报告与 PPT
 python member4_product/code/product_analysis_v3.py
 python member4_product/code/xueqiu_export_v3.py
-python member4_product/code/make_figures_v3.py
-python member4_product/code/generate_report_v3_md.py
+python member4_product/code/make_figures_report_tex.py
+python member4_product/code/build_report_tex_v3.py
+python member4_product/code/make_figures_v3_brand.py
 python member4_product/code/build_deck_v3.py
 ```
 
@@ -135,4 +131,4 @@ python member4_product/code/build_deck_v3.py
 1. **唯一净值源与交叉复算差异**：本项目以 `member3_backtest/code/run_backtest_v3.py` 生成的结果为唯一净值源。将其与组员 3 随包参考实现 `member3_backtest/code/member3_official_ref/engine_v3.py` 交叉复算后，全部 14 项核心账户精确对齐（最大差 `0.0000` 个百分点）；仅中证 500 `M0b` 存在 `0.12` 个百分点差异（修订版 `-10.96%` vs 随包旧净值 `-10.84%`，源于参考实现第 90 行仍采用全期 `any(is_st)` 而修订版改用逐日 `is_st`）。
 2. **历史留后区间边界**：`2025-01-01` 至 `2026-10-30` 已参与方案讨论与消融比较，全文统一标注为“历史留后区间（已参与方案讨论）”，不宣称纯样本外盲测。
 3. **价格指数与分红口径**：策略净值按后复权含分红计算，基准沪深 300（`000300.SH`）为价格指数；报告中按假设年股息率扣减 10–12 个百分点仅为情景估算，精确全收益超额需采用同起点全收益指数重算。
-4. **雪球模拟记录分列**：雪球 30 股的 `+77.63%` 属历史映射回测，`2026-10-30` 清单属历史末期目标；`ZH3689205` 既有历史记录完整封存，11 月起实盘调仓与截图按启用日期与历史回测严格分列。
+4. **雪球模拟记录与核验元数据分列**：雪球 30 股的 `+77.63%` 属历史映射回测，`2026-10-30` 清单属历史末期目标；`ZH3689205` 于 `2026-11-18` 按前期 M0a 30 股分层建仓，本地归档截图支持披露至 `2026-11-23`（净值 `0.9909`、累计 `-0.91%`，经人工核验记录于 `member4_product/xueqiu/xueqiu_screenshot_verified.json`），`2026-11-25` 拟议切换指令单（单边换手 `16.00%`）的平台生效时间以调仓成交回执为准。

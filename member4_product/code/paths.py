@@ -12,7 +12,7 @@ MEMBER4_DIR = Path(__file__).resolve().parent.parent
 
 
 def _find_workspace_root() -> Path:
-    """定位 `大作业/` 根目录（兼容 `大作业/02_组员4_工作区/member4` 与平铺 `大作业/member4`）。"""
+    """定位 `大作业/` 或 `csi300-quant-strategy/` 根目录。"""
     p = MEMBER4_DIR.parent
     if p.name == "02_组员4_工作区":
         return p.parent
@@ -59,12 +59,22 @@ def resolve_tushare_pool_processed(pool: str = "hs300") -> Path:
     return _first_existing(cands, cands[0])
 
 
+def resolve_member1_metadata(pool: str = "hs300") -> Path:
+    """解析组员 1 双池构建元数据 JSON（兼容 GitHub 仓库 metadata/ 与工作区 processed/）。"""
+    cands = [
+        WORKSPACE_ROOT / "member1_data" / "metadata" / f"{pool}_RUN_METADATA.json",
+        UPSTREAM_ROOT / "组员1_数据" / "Tushare_双股票池完整数据与代码" / "tushare_data" / pool / "processed" / "RUN_METADATA.json",
+        WORKSPACE_ROOT / "Tushare_双股票池完整数据与代码" / "tushare_data" / pool / "processed" / "RUN_METADATA.json",
+    ]
+    return _first_existing(cands, cands[0])
+
+
 def resolve_tushare_hs300_processed() -> Path:
     return resolve_tushare_pool_processed("hs300")
 
 
 def resolve_member2_tushare_pool(pool: str = "hs300") -> Path:
-    """解析组员 2 最新 Tushare 双池交付目录 member2_signals/{hs300,zz500}。"""
+    """解析组员 2 最新 Tushare 双池交付目录 member2_signals/{hs300,zz500} 或 member2_tushare/{hs300,zz500}。"""
     cands = [
         WORKSPACE_ROOT / "member2_signals" / pool,
         UPSTREAM_ROOT / "组员2_因子与信号" / "member2_tushare" / pool,

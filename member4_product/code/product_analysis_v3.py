@@ -317,7 +317,7 @@ def main():
             "stop_loss_line": 0.80,
             "recommended_conservative_aum_yi": [3.0, 6.0],
             "stress_test_aum_yi": [10.0, 15.0],
-            "recommended_aum_note": f"5%参与率下1日调仓P10为{hs_1d_p10:.2f}亿（中位数{hs_1d_med:.2f}亿）、3日调仓P10为{hs_3d_p10:.2f}亿（中位数{hs_3d_med:.2f}亿）、5日清仓P10为{hs_5d_p10:.2f}亿（中位数{hs_5d_med:.2f}亿）；硬约束稳健首期规模定位 3–6 亿元，10–15 亿元列为待多日拆单压力测试的扩张情景（Y=0.8冲击半衰理论容量{half_caps['hs300_M4_main']['Y_0.8']:.2f}亿）。",
+            "recommended_aum_note": f"5%参与率下1日调仓P10为{hs_1d_p10:.2f}亿（中位数{hs_1d_med:.2f}亿）、假设3日拆单P10为{hs_3d_p10:.2f}亿（中位数{hs_3d_med:.2f}亿）、5日清仓P10为{hs_5d_p10:.2f}亿（中位数{hs_5d_med:.2f}亿）；3亿情景3日拆单与5日清仓均0期超限，5亿情景1日/3日/5日清仓分别38/4/1期超限（最长5.013天），首期募资宜控制在3–6亿元低超限执行情景并配合尾部拆单，10–15亿元列为多日拆单压力测试情景（Y=0.8冲击半衰理论容量{half_caps['hs300_M4_main']['Y_0.8']:.2f}亿）。",
         },
         "capacity_stress_test": stress_rows,
         "cross_pool_capacity_highlight": {
